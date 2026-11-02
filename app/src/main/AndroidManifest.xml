@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- The desktop keeps going while it installs and runs -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <application
+        android:name=".DesktopApp"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:localeConfig="@xml/locales_config"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Flux">
+
+        <!-- The desktop's page: Linux installed, started and stopped, its programs -->
+        <activity
+            android:name=".LinuxActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Exported so the shell can open it on a TV's screen (it only shows the desktop) -->
+        <activity
+            android:name=".LinuxViewerActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:taskAffinity="io.github.fluxsniffermods.fluxdesktop.viewer"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation|density|uiMode"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+        <!-- A Linux program's home-screen shortcut: opens it in the desktop -->
+        <activity
+            android:name=".LinuxLaunchActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!-- The desktop opened for another Flux app (Flux Streaming), started first if need be -->
+        <activity
+            android:name=".LinuxOpenActivity"
+            android:exported="true"
+            android:permission="io.github.fluxsniffermods.permission.LINK"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <service
+            android:name=".LinuxService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Keeps a Linux desktop the user started (installing or running) going on the phone" />
+        </service>
+
+        <!-- The other Flux apps' way in (Flux Streaming lists and opens the desktop) -->
+        <provider
+            android:name=".DesktopLink"
+            android:authorities="${applicationId}.link"
+            android:exported="true"
+            android:permission="io.github.fluxsniffermods.permission.LINK" />
+    </application>
+</manifest>
