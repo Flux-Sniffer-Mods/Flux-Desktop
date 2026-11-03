@@ -5,8 +5,9 @@
 The Linux desktop was the Desktop module of Flux Titan Hub. It's now Flux Desktop, an app of its
 own with its own page, updates and About page, on Flux Core (what the Flux apps share).
 
-- **Set up again in Flux Desktop**: its Linux is installed afresh here (the copy in Flux Titan Hub
-  can be removed there to free its space).
+- **Your Linux carries on**: it lives where the shell keeps it, not inside the app, so the Linux
+  set up in Flux Titan Hub opens here as it is once Flux Keyboard is updated (its settings come over
+  from it). Home screen shortcuts to Linux programs are pinned again from here.
 - **One shell for all the Flux apps**: the built-in shell paired in any of them is used by the rest,
   so pairing once is enough.
 - **The keyboard's layers from Flux Keyboard**: Alt and Sym type in Linux as Flux Keyboard has them

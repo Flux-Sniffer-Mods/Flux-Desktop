@@ -2,7 +2,7 @@
   "title": "Flux Desktop",
   "highlights": [
     {
-      "text": "Flux Desktop is an app of its own: the Linux desktop moved out of Flux Titan Hub, with its own page, updates and About page. Set it up again here (Debian or Ubuntu, Xfce or KDE Plasma); the built-in shell paired in any Flux app works here too.",
+      "text": "Flux Desktop is an app of its own: the Linux desktop moved out of Flux Titan Hub, with its own page, updates and About page. The Linux you set up there carries on here as it is (no reinstall) once Flux Keyboard is updated, and the built-in shell paired in any Flux app works here too.",
       "after": "202611021700"
     }
   ],

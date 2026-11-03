@@ -21,5 +21,11 @@ class DesktopApp : Application() {
                 crashTags = "FluxLinux|FluxExtraScreen|Xvnc|proot"
             )
         )
+        // Once: the Linux Flux Titan Hub set up (it lives where the shell keeps it, not in the
+        // app) carries on here, its settings taken over from Flux Keyboard
+        val app = this
+        Thread {
+            if (io.github.fluxsniffermods.core.link.FluxMigration.importOnce(app, listOf("linux_"))) LinuxDesktop.refresh(app)
+        }.start()
     }
 }
